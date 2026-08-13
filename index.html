@@ -15,7 +15,6 @@
         :root {
             --bg-dark: #0d1117;
             --bg-card: #161b22;
-            --bg-card-hover: #1c2128;
             --border-color: #30363d;
             --text-main: #f0f6fc;
             --text-sub: #8b949e;
@@ -190,7 +189,7 @@
         .section-title {
             font-size: 2rem;
             font-weight: 700;
-            margin-bottom: 35px;
+            margin-bottom: 40px;
             position: relative;
             display: inline-block;
         }
@@ -278,77 +277,114 @@
             font-size: 0.9rem;
         }
 
-        /* Projects Section */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 30px;
-        }
-
-        .project-card {
-            background: var(--bg-card);
-            border: 1px solid var(--border-color);
-            border-radius: 12px;
-            overflow: hidden;
-            transition: transform 0.3s, border-color 0.3s;
-            display: flex;
-            flex-direction: column;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-            border-color: var(--accent-blue);
-        }
-
-        .project-img {
-            width: 100%;
-            height: 220px;
-            object-fit: cover;
-            background-color: #21262d;
+        /* Projects Section - Open Layout (No Boxes) */
+        .project-item {
+            margin-bottom: 70px;
+            padding-bottom: 60px;
             border-bottom: 1px solid var(--border-color);
         }
 
-        .project-content {
-            padding: 25px;
-            flex: 1;
-            display: flex;
-            flex-direction: column;
-            justify-content: space-between;
+        .project-item:last-child {
+            border-bottom: none;
+            margin-bottom: 0;
+            padding-bottom: 0;
         }
 
         .project-title {
-            font-size: 1.25rem;
-            margin-bottom: 10px;
+            font-size: 1.8rem;
+            font-weight: 700;
             color: var(--text-main);
+            margin-bottom: 12px;
         }
 
         .project-desc {
             color: var(--text-sub);
-            font-size: 0.95rem;
+            font-size: 1.05rem;
             margin-bottom: 15px;
+            line-height: 1.7;
         }
 
         .project-features {
             list-style-type: disc;
             padding-left: 20px;
             color: var(--text-sub);
-            font-size: 0.9rem;
-            margin-bottom: 15px;
+            font-size: 0.95rem;
+            margin-bottom: 20px;
+        }
+
+        .project-features li {
+            margin-bottom: 6px;
+        }
+
+        .project-meta {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 15px;
+            margin-bottom: 30px;
         }
 
         .project-tags {
             display: flex;
             flex-wrap: wrap;
             gap: 8px;
-            margin-bottom: 20px;
         }
 
         .tag {
             background: #21262d;
             color: var(--accent-purple);
-            font-size: 0.8rem;
-            padding: 3px 10px;
+            font-size: 0.85rem;
+            padding: 4px 12px;
             border-radius: 6px;
+            border: 1px solid rgba(168, 85, 247, 0.2);
+        }
+
+        /* Project 1: Mobile Vertical Screenshots Gallery (Left to Right) */
+        .mobile-gallery {
+            display: flex;
+            gap: 20px;
+            justify-content: flex-start;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        .mobile-gallery img {
+            width: calc(33.333% - 14px);
+            max-width: 260px;
+            min-width: 200px;
+            height: auto;
+            border-radius: 16px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .mobile-gallery img:hover {
+            transform: translateY(-6px);
+            border-color: var(--accent-blue);
+        }
+
+        /* Project 2: Web Horizontal Screenshots Gallery (Stacked Top to Bottom - Medium Size) */
+        .web-gallery {
+            display: flex;
+            flex-direction: column;
+            gap: 25px;
+            align-items: center;
+        }
+
+        .web-gallery img {
+            width: 100%;
+            max-width: 850px; /* ขนาดกลาง ไม่ใหญ่หรือเล็กเกินไป */
+            height: auto;
+            border-radius: 12px;
+            border: 1px solid var(--border-color);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+            transition: transform 0.3s ease, border-color 0.3s ease;
+        }
+
+        .web-gallery img:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-purple);
         }
 
         /* Footer */
@@ -375,6 +411,13 @@
             .contact-btn-group {
                 justify-content: center;
             }
+            .mobile-gallery {
+                justify-content: center;
+            }
+            .mobile-gallery img {
+                width: 100%;
+                max-width: 280px;
+            }
         }
     </style>
 </head>
@@ -397,7 +440,6 @@
         <!-- Hero Section -->
         <section id="hero">
             <div class="hero-img-container">
-                <!-- รูปโปรไฟล์ของคุณ (images/profile.jpg) -->
                 <img src="images/profile.jpg" alt="Thanachit Kanya" class="hero-img" onerror="this.src='https://via.placeholder.com/260?text=Thanachit'">
             </div>
             <div class="hero-text">
@@ -476,74 +518,73 @@
             </div>
         </section>
 
-        <!-- Projects Section -->
+        <!-- Projects Section (Open Layout) -->
         <section id="projects">
             <h2 class="section-title">ผลงานโดดเด่น (Academic Projects)</h2>
-            <div class="projects-grid">
-                
-                <!-- Project 1 -->
-                <div class="project-card">
-                    <!-- รูปผลงาน Check-Air (images/check-air.png) -->
-                    <img src="images/check-air.png" alt="Check-Air-Eco-Tips" class="project-img" onerror="this.src='https://via.placeholder.com/400x220?text=Check-Air+Mobile+App'">
-                    <div class="project-content">
-                        <div>
-                            <h3 class="project-title">Check-Air-Eco-Tips Mini-Project</h3>
-                            <p class="project-desc">
-                                แอปพลิเคชันติดตามสถานการณ์คุณภาพอากาศ (AQI) ฝุ่น PM2.5 / PM10 แบบ Real-time ครอบคลุม 77 จังหวัดทั่วไทย พร้อมระบบ Smart Eco-Tips แนะนำการปฏิบัติตัวตามระดับฝุ่น
-                            </p>
-                            <ul class="project-features">
-                                <li>เชื่อมต่อข้อมูลภายนอกผ่าน RESTful API</li>
-                                <li>เปลี่ยนสีพื้นหลังและตัวเลขตามมาตรฐาน US AQI อัตโนมัติ</li>
-                                <li>อัปเดตข้อมูลอัตโนมัติทุกๆ 1 ชม. และรองรับ Pull-to-refresh</li>
-                                <li>ระบบ Login พร้อม Form Validation และซ่อนรหัสผ่าน</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <div class="project-tags">
-                                <span class="tag">Mobile Application</span>
-                                <span class="tag">RESTful API</span>
-                                <span class="tag">Dart / Flutter</span>
-                                <span class="tag">UX / UI</span>
-                            </div>
-                            <a href="https://github.com/Chit-Thanachit/Check-Air-Eco-Tips_Mini-Project-Mobile-Application" target="_blank" class="btn btn-outline" style="width: 100%; justify-content: center;">
-                                <i class="fa-brands fa-github"></i> ดูซอร์สโค้ดบน GitHub
-                            </a>
-                        </div>
+
+            <!-- Project 1: Check-Air Mobile App -->
+            <div class="project-item">
+                <h3 class="project-title">Check-Air-Eco-Tips Mini-Project</h3>
+                <p class="project-desc">
+                    แอปพลิเคชันติดตามสถานการณ์คุณภาพอากาศ (AQI) ฝุ่น PM2.5 / PM10 แบบ Real-time ครอบคลุม 77 จังหวัดทั่วไทย พร้อมระบบ Smart Eco-Tips แนะนำการปฏิบัติตัวตามระดับฝุ่น
+                </p>
+                <ul class="project-features">
+                    <li>เชื่อมต่อข้อมูลภายนอกผ่าน RESTful API</li>
+                    <li>เปลี่ยนสีพื้นหลังและตัวเลขตามมาตรฐาน US AQI อัตโนมัติ</li>
+                    <li>อัปเดตข้อมูลอัตโนมัติทุกๆ 1 ชม. และรองรับ Pull-to-refresh</li>
+                    <li>ระบบ Login พร้อม Form Validation และซ่อนรหัสผ่าน</li>
+                </ul>
+                <div class="project-meta">
+                    <div class="project-tags">
+                        <span class="tag">Mobile Application</span>
+                        <span class="tag">RESTful API</span>
+                        <span class="tag">Dart / Flutter</span>
+                        <span class="tag">UX / UI</span>
                     </div>
+                    <a href="https://github.com/Chit-Thanachit/Check-Air-Eco-Tips_Mini-Project-Mobile-Application" target="_blank" class="btn btn-outline">
+                        <i class="fa-brands fa-github"></i> ดูซอร์สโค้ดบน GitHub
+                    </a>
                 </div>
 
-                <!-- Project 2 -->
-                <div class="project-card">
-                    <!-- รูปผลงาน จองสนามกอล์ฟ (images/golf-app.png) -->
-                    <img src="images/golf-app.png" alt="Golf Course Booking System" class="project-img" onerror="this.src='https://via.placeholder.com/400x220?text=Golf+Course+Booking+Web+App'">
-                    <div class="project-content">
-                        <div>
-                            <h3 class="project-title">เว็บแอปพลิเคชันจองคิวสนามกอล์ฟลานนา</h3>
-                            <p class="project-desc">
-                                ระบบสารสนเทศจองคิวสนามกอล์ฟแบบ Responsive ตลอด 24 ชม. ตรวจสอบคิวว่างแบบเรียลไทม์ เลือกแคดดี้ ยืมอุปกรณ์ และระบบปฏิบัติการหลังบ้านสำหรับเจ้าหน้าที่และผู้ดูแลระบบ
-                            </p>
-                            <ul class="project-features">
-                                <li>คุมโครงสร้างตารางและ Transaction ป้องกันปัญหา Race Condition ในการจอง</li>
-                                <li>จัดการ API & State Management ด้วย StatefulWidget</li>
-                                <li>ระบบจำกัดสิทธิ์ผู้ใช้ตามบทบาท (6 บทบาท) เพื่อความปลอดภัย</li>
-                                <li>การจัดเก็บข้อมูล Scorecard เตรียมพร้อมสำหรับการวิเคราะห์ด้วยภาษา R</li>
-                            </ul>
-                        </div>
-                        <div>
-                            <div class="project-tags">
-                                <span class="tag">Web Application</span>
-                                <span class="tag">PHP / SQL</span>
-                                <span class="tag">Database Design</span>
-                                <span class="tag">Data Analytics (R)</span>
-                            </div>
-                            <span class="btn btn-outline" style="width: 100%; justify-content: center; opacity: 0.7; cursor: default;">
-                                <i class="fa-solid fa-hourglass-half"></i> อยู่ระหว่างการพัฒนา
-                            </span>
-                        </div>
-                    </div>
+                <!-- 3 Mobile Vertical Screenshots Layout -->
+                <div class="mobile-gallery">
+                    <img src="images/check-air1.png" alt="Check-Air Screenshot 1" onerror="this.src='https://via.placeholder.com/260x520?text=Check-Air+1'">
+                    <img src="images/check-air2.png" alt="Check-Air Screenshot 2" onerror="this.src='https://via.placeholder.com/260x520?text=Check-Air+2'">
+                    <img src="images/check-air3.png" alt="Check-Air Screenshot 3" onerror="this.src='https://via.placeholder.com/260x520?text=Check-Air+3'">
                 </div>
-
             </div>
+
+            <!-- Project 2: Lanna Golf Web App -->
+            <div class="project-item">
+                <h3 class="project-title">โครงงาน การพัฒนาเว็บแอปพลิเคชันเพื่อจองคิวใช้บริการสนามกอล์ฟ (สนามกอล์ฟลานนา)</h3>
+                <p class="project-desc">
+                    ระบบสารสนเทศจองคิวสนามกอล์ฟแบบ Responsive ตลอด 24 ชม. ตรวจสอบคิวว่างแบบเรียลไทม์ เลือกแคดดี้ ยืมอุปกรณ์ และระบบปฏิบัติการหลังบ้านสำหรับเจ้าหน้าที่และผู้ดูแลระบบ
+                </p>
+                <ul class="project-features">
+                    <li>คุมโครงสร้างตารางและ Transaction ป้องกันปัญหา Race Condition ในการจอง</li>
+                    <li>จัดการ API & State Management ด้วย StatefulWidget</li>
+                    <li>ระบบจำกัดสิทธิ์ผู้ใช้ตามบทบาท (6 บทบาท) เพื่อความปลอดภัย</li>
+                    <li>การจัดเก็บข้อมูล Scorecard เตรียมพร้อมสำหรับการวิเคราะห์ด้วยภาษา R</li>
+                </ul>
+                <div class="project-meta">
+                    <div class="project-tags">
+                        <span class="tag">Web Application</span>
+                        <span class="tag">PHP / SQL</span>
+                        <span class="tag">Database Design</span>
+                        <span class="tag">Data Analytics (R)</span>
+                    </div>
+                    <span class="btn btn-outline" style="opacity: 0.7; cursor: default;">
+                        <i class="fa-solid fa-hourglass-half"></i> อยู่ระหว่างการพัฒนา
+                    </span>
+                </div>
+
+                <!-- 2 Web Horizontal Screenshots Stacked Vertically -->
+                <div class="web-gallery">
+                    <img src="images/golf-app1.png" alt="Golf App Screenshot 1" onerror="this.src='https://via.placeholder.com/850x450?text=Golf+App+Dashboard'">
+                    <img src="images/golf-app2.png" alt="Golf App Screenshot 2" onerror="this.src='https://via.placeholder.com/850x450?text=Golf+App+Management'">
+                </div>
+            </div>
+
         </section>
     </div>
 

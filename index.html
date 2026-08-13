@@ -3,23 +3,556 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>My Portfolio</title>
+    <title>Thanachit Kanya - Personal Portfolio</title>
+    <!-- Google Fonts & Font Awesome Icons -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kanit:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+    <style>
+        /* CSS Variables & Theme Setup */
+        :root {
+            --bg-dark: #0d1117;
+            --bg-card: #161b22;
+            --bg-card-hover: #1c2128;
+            --border-color: #30363d;
+            --text-main: #f0f6fc;
+            --text-sub: #8b949e;
+            --accent-blue: #38bdf8;
+            --accent-purple: #a855f7;
+            --accent-gradient: linear-gradient(135deg, #38bdf8, #a855f7);
+            --font-family: 'Kanit', sans-serif;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: var(--font-family);
+        }
+
+        body {
+            background-color: var(--bg-dark);
+            color: var(--text-main);
+            line-height: 1.6;
+            scroll-behavior: smooth;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Navigation Bar */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            background: rgba(13, 17, 23, 0.85);
+            backdrop-filter: blur(10px);
+            border-bottom: 1px solid var(--border-color);
+            z-index: 1000;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            height: 70px;
+        }
+
+        .logo {
+            font-size: 1.3rem;
+            font-weight: 700;
+            background: var(--accent-gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 25px;
+        }
+
+        .nav-links a {
+            color: var(--text-sub);
+            text-decoration: none;
+            font-weight: 400;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: var(--accent-blue);
+        }
+
+        /* Hero Section */
+        #hero {
+            padding-top: 140px;
+            padding-bottom: 80px;
+            display: flex;
+            align-items: center;
+            gap: 50px;
+            flex-wrap: wrap;
+        }
+
+        .hero-img-container {
+            flex: 1;
+            min-width: 250px;
+            display: flex;
+            justify-content: center;
+        }
+
+        .hero-img {
+            width: 240px;
+            height: 240px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 4px solid var(--accent-purple);
+            box-shadow: 0 0 25px rgba(168, 85, 247, 0.3);
+        }
+
+        .hero-text {
+            flex: 2;
+            min-width: 300px;
+        }
+
+        .hero-subtitle {
+            color: var(--accent-blue);
+            font-size: 1.2rem;
+            font-weight: 500;
+            margin-bottom: 5px;
+        }
+
+        .hero-title {
+            font-size: 2.8rem;
+            font-weight: 700;
+            line-height: 1.2;
+            margin-bottom: 15px;
+        }
+
+        .hero-desc {
+            color: var(--text-sub);
+            font-size: 1.05rem;
+            margin-bottom: 25px;
+        }
+
+        .contact-btn-group {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px 22px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: var(--accent-gradient);
+            color: #fff;
+            box-shadow: 0 4px 15px rgba(56, 189, 248, 0.2);
+        }
+
+        .btn-primary:hover {
+            opacity: 0.9;
+            transform: translateY(-2px);
+        }
+
+        .btn-outline {
+            border: 1px solid var(--border-color);
+            color: var(--text-main);
+            background: var(--bg-card);
+        }
+
+        .btn-outline:hover {
+            border-color: var(--accent-blue);
+            color: var(--accent-blue);
+            transform: translateY(-2px);
+        }
+
+        /* Global Section Layout */
+        section {
+            padding: 70px 0;
+            border-top: 1px solid var(--border-color);
+        }
+
+        .section-title {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 35px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-title::after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 0;
+            width: 50%;
+            height: 4px;
+            background: var(--accent-gradient);
+            border-radius: 2px;
+        }
+
+        /* About & Education Cards */
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .info-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 25px;
+            border-radius: 12px;
+        }
+
+        .info-card h3 {
+            color: var(--accent-blue);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .info-list {
+            list-style: none;
+        }
+
+        .info-list li {
+            margin-bottom: 12px;
+            color: var(--text-sub);
+        }
+
+        .info-list strong {
+            color: var(--text-main);
+        }
+
+        /* Skills Cards & Badges */
+        .skills-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .skill-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            padding: 25px;
+            border-radius: 12px;
+        }
+
+        .skill-card h3 {
+            color: var(--accent-purple);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .badge-group {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+
+        .badge {
+            background: #21262d;
+            color: var(--accent-blue);
+            border: 1px solid rgba(56, 189, 248, 0.2);
+            padding: 6px 14px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Projects Section */
+        .projects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .project-card {
+            background: var(--bg-card);
+            border: 1px solid var(--border-color);
+            border-radius: 12px;
+            overflow: hidden;
+            transition: transform 0.3s, border-color 0.3s;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--accent-blue);
+        }
+
+        .project-img {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
+            background-color: #21262d;
+            border-bottom: 1px solid var(--border-color);
+        }
+
+        .project-content {
+            padding: 25px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+
+        .project-title {
+            font-size: 1.25rem;
+            margin-bottom: 10px;
+            color: var(--text-main);
+        }
+
+        .project-desc {
+            color: var(--text-sub);
+            font-size: 0.95rem;
+            margin-bottom: 15px;
+        }
+
+        .project-features {
+            list-style-type: disc;
+            padding-left: 20px;
+            color: var(--text-sub);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+
+        .project-tags {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-bottom: 20px;
+        }
+
+        .tag {
+            background: #21262d;
+            color: var(--accent-purple);
+            font-size: 0.8rem;
+            padding: 3px 10px;
+            border-radius: 6px;
+        }
+
+        /* Footer */
+        footer {
+            padding: 40px 0;
+            text-align: center;
+            color: var(--text-sub);
+            border-top: 1px solid var(--border-color);
+            font-size: 0.9rem;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+            .hero-title {
+                font-size: 2.2rem;
+            }
+            #hero {
+                padding-top: 100px;
+                text-align: center;
+            }
+            .contact-btn-group {
+                justify-content: center;
+            }
+        }
+    </style>
 </head>
 <body>
-    <h1>HELLO, I'M THANACHIT KANYA</h1>
-    <p>สาขาวิชา: บธ.บ. ระบบสารสนเทศทางธุรกิจ (การพัฒนาซอฟต์แวร์)</p>
-    
-    <h2>ทักษะ (Skills)</h2>
-    <ul>
-        <li>HTML/CSS, JavaScript, PHP, SQL</li>
-        <li>Mobile Application Programming</li>
-        <li>UX/UI Design</li>
-    </ul>
 
-    <h2>ผลงาน (Projects)</h2>
-    <ul>
-        <li>Check-Air-Eco-Tips Mini-Project</li>
-        <li>เว็บแอปพลิเคชันจองคิวสนามกอล์ฟลานนา</li>
-    </ul>
+    <!-- Navigation Bar -->
+    <nav>
+        <div class="container nav-container">
+            <div class="logo">THANACHIT.DEV</div>
+            <ul class="nav-links">
+                <li><a href="#about">เกี่ยวกับ</a></li>
+                <li><a href="#skills">ทักษะ</a></li>
+                <li><a href="#projects">ผลงาน</a></li>
+                <li><a href="#contact">ติดต่อ</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <div class="container">
+        <!-- Hero Section -->
+        <section id="hero">
+            <div class="hero-img-container">
+                <!-- รูปโปรไฟล์ของคุณ (images/profile.jpg) -->
+                <img src="images/profile.jpg" alt="Thanachit Kanya" class="hero-img" onerror="this.src='https://via.placeholder.com/260?text=Thanachit'">
+            </div>
+            <div class="hero-text">
+                <div class="hero-subtitle">สวัสดีครับ ผมชื่อ</div>
+                <h1 class="hero-title">นาย ธนชิต กันยา</h1>
+                <p class="hero-desc">
+                    นักศึกษาสาขาวิชา ระบบสารสนเทศทางธุรกิจ (เอกการพัฒนาซอฟต์แวร์) ชั้นปีที่ 4 มหาวิทยาลัยเทคโนโลยีราชมงคลล้านนา มีความเชี่ยวชาญด้าน Mobile Application Development, Web Development และ UX/UI Design
+                </p>
+                <div class="contact-btn-group" id="contact">
+                    <a href="mailto:thanachit.kanya@gmail.com" class="btn btn-primary">
+                        <i class="fa-solid fa-envelope"></i> อีเมลติดต่อ
+                    </a>
+                    <a href="tel:0991541400" class="btn btn-outline">
+                        <i class="fa-solid fa-phone"></i> 099-154-1400
+                    </a>
+                    <a href="https://github.com/Chit-Thanachit" target="_blank" class="btn btn-outline">
+                        <i class="fa-brands fa-github"></i> GitHub Profile
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!-- About & Education Section -->
+        <section id="about">
+            <h2 class="section-title">ข้อมูลส่วนตัวและการศึกษา</h2>
+            <div class="info-grid">
+                <div class="info-card">
+                    <h3><i class="fa-solid fa-user"></i> ข้อมูลส่วนตัว</h3>
+                    <ul class="info-list">
+                        <li><strong>ชื่อ-นามสกุล:</strong> นาย ธนชิต กันยา</li>
+                        <li><strong>อายุ:</strong> 21 ปี</li>
+                        <li><strong>อีเมล:</strong> thanachit.kanya@gmail.com</li>
+                        <li><strong>เบอร์โทรศัพท์:</strong> 099-154-1400</li>
+                    </ul>
+                </div>
+                <div class="info-card">
+                    <h3><i class="fa-solid fa-graduation-cap"></i> ประวัติการศึกษา</h3>
+                    <ul class="info-list">
+                        <li><strong>ระดับการศึกษา:</strong> ปริญญาตรี ชั้นปีที่ 4</li>
+                        <li><strong>หลักสูตร:</strong> บริหารธุรกิจบ่มเพาะ (บธ.บ.)</li>
+                        <li><strong>สาขาวิชา:</strong> ระบบสารสนเทศทางธุรกิจ (วิชาเอก การพัฒนาซอฟต์แวร์)</li>
+                        <li><strong>คณะ:</strong> คณะบริหารธุรกิจและศิลปศาสตร์</li>
+                        <li><strong>สถาบัน:</strong> มหาวิทยาลัยเทคโนโลยีราชมงคลล้านนา</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Skills Section -->
+        <section id="skills">
+            <h2 class="section-title">ทักษะความสามารถ (Skills)</h2>
+            <div class="skills-container">
+                <div class="skill-card">
+                    <h3><i class="fa-solid fa-code"></i> Programming Languages</h3>
+                    <div class="badge-group">
+                        <span class="badge">C</span>
+                        <span class="badge">Python</span>
+                        <span class="badge">HTML / CSS</span>
+                        <span class="badge">JavaScript</span>
+                        <span class="badge">PHP</span>
+                        <span class="badge">SQL</span>
+                        <span class="badge">Dart</span>
+                    </div>
+                </div>
+                <div class="skill-card">
+                    <h3><i class="fa-solid fa-laptop-code"></i> Technical & Design Skills</h3>
+                    <div class="badge-group">
+                        <span class="badge">Mobile Application Programming</span>
+                        <span class="badge">OOP (Object Oriented)</span>
+                        <span class="badge">Web Design & Business Dev</span>
+                        <span class="badge">UX / UI Design</span>
+                        <span class="badge">System Analysis & Design (DFD / ER Diagram)</span>
+                        <span class="badge">IT Project Management</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Projects Section -->
+        <section id="projects">
+            <h2 class="section-title">ผลงานโดดเด่น (Academic Projects)</h2>
+            <div class="projects-grid">
+                
+                <!-- Project 1 -->
+                <div class="project-card">
+                    <!-- รูปผลงาน Check-Air (images/check-air.png) -->
+                    <img src="images/check-air.png" alt="Check-Air-Eco-Tips" class="project-img" onerror="this.src='https://via.placeholder.com/400x220?text=Check-Air+Mobile+App'">
+                    <div class="project-content">
+                        <div>
+                            <h3 class="project-title">Check-Air-Eco-Tips Mini-Project</h3>
+                            <p class="project-desc">
+                                แอปพลิเคชันติดตามสถานการณ์คุณภาพอากาศ (AQI) ฝุ่น PM2.5 / PM10 แบบ Real-time ครอบคลุม 77 จังหวัดทั่วไทย พร้อมระบบ Smart Eco-Tips แนะนำการปฏิบัติตัวตามระดับฝุ่น
+                            </p>
+                            <ul class="project-features">
+                                <li>เชื่อมต่อข้อมูลภายนอกผ่าน RESTful API</li>
+                                <li>เปลี่ยนสีพื้นหลังและตัวเลขตามมาตรฐาน US AQI อัตโนมัติ</li>
+                                <li>อัปเดตข้อมูลอัตโนมัติทุกๆ 1 ชม. และรองรับ Pull-to-refresh</li>
+                                <li>ระบบ Login พร้อม Form Validation และซ่อนรหัสผ่าน</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <div class="project-tags">
+                                <span class="tag">Mobile Application</span>
+                                <span class="tag">RESTful API</span>
+                                <span class="tag">Dart / Flutter</span>
+                                <span class="tag">UX / UI</span>
+                            </div>
+                            <a href="https://github.com/Chit-Thanachit/Check-Air-Eco-Tips_Mini-Project-Mobile-Application" target="_blank" class="btn btn-outline" style="width: 100%; justify-content: center;">
+                                <i class="fa-brands fa-github"></i> ดูซอร์สโค้ดบน GitHub
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project 2 -->
+                <div class="project-card">
+                    <!-- รูปผลงาน จองสนามกอล์ฟ (images/golf-app.png) -->
+                    <img src="images/golf-app.png" alt="Golf Course Booking System" class="project-img" onerror="this.src='https://via.placeholder.com/400x220?text=Golf+Course+Booking+Web+App'">
+                    <div class="project-content">
+                        <div>
+                            <h3 class="project-title">เว็บแอปพลิเคชันจองคิวสนามกอล์ฟลานนา</h3>
+                            <p class="project-desc">
+                                ระบบสารสนเทศจองคิวสนามกอล์ฟแบบ Responsive ตลอด 24 ชม. ตรวจสอบคิวว่างแบบเรียลไทม์ เลือกแคดดี้ ยืมอุปกรณ์ และระบบปฏิบัติการหลังบ้านสำหรับเจ้าหน้าที่และผู้ดูแลระบบ
+                            </p>
+                            <ul class="project-features">
+                                <li>คุมโครงสร้างตารางและ Transaction ป้องกันปัญหา Race Condition ในการจอง</li>
+                                <li>จัดการ API & State Management ด้วย StatefulWidget</li>
+                                <li>ระบบจำกัดสิทธิ์ผู้ใช้ตามบทบาท (6 บทบาท) เพื่อความปลอดภัย</li>
+                                <li>การจัดเก็บข้อมูล Scorecard เตรียมพร้อมสำหรับการวิเคราะห์ด้วยภาษา R</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <div class="project-tags">
+                                <span class="tag">Web Application</span>
+                                <span class="tag">PHP / SQL</span>
+                                <span class="tag">Database Design</span>
+                                <span class="tag">Data Analytics (R)</span>
+                            </div>
+                            <span class="btn btn-outline" style="width: 100%; justify-content: center; opacity: 0.7; cursor: default;">
+                                <i class="fa-solid fa-hourglass-half"></i> อยู่ระหว่างการพัฒนา
+                            </span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <p>© 2026 Thanachit Kanya. Built with HTML/CSS/JS & Hosted on GitHub Pages.</p>
+        </div>
+    </footer>
+
 </body>
 </html>

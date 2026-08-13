@@ -518,31 +518,37 @@
             </div>
         </section>
 
-        <!-- Projects Section (Open Layout) -->
+        <!-- Projects Section (Open Layout - Detailed Version) -->
         <section id="projects">
             <h2 class="section-title">ผลงานโดดเด่น (Academic Projects)</h2>
 
             <!-- Project 1: Check-Air Mobile App -->
             <div class="project-item">
-                <h3 class="project-title">Check-Air-Eco-Tips Mini-Project</h3>
+                <h3 class="project-title">Check-Air-Eco-Tips Mini-Project Mobile Application</h3>
+                
                 <p class="project-desc">
-                    แอปพลิเคชันติดตามสถานการณ์คุณภาพอากาศ (AQI) ฝุ่น PM2.5 / PM10 แบบ Real-time ครอบคลุม 77 จังหวัดทั่วไทย พร้อมระบบ Smart Eco-Tips แนะนำการปฏิบัติตัวตามระดับฝุ่น
+                    มินิโปรเจกต์สำหรับรายวิชา Mobile Application Programming[cite: 1] ที่พัฒนาขึ้นเพื่อแก้ปัญหาการติดตามคุณภาพอากาศในชีวิตประจำวัน[cite: 1] โดยช่วยให้ผู้ใช้งานสามารถติดตามสถานการณ์คุณภาพอากาศ (AQI) ฝุ่นละอองขนาดเล็ก (PM2.5 และ PM10) และสภาพอากาศได้แบบ Real-time[cite: 1] ดึงข้อมูลที่แม่นยำจากฐานข้อมูลภายนอกผ่าน RESTful API ครอบคลุมพื้นที่ทั้ง 77 จังหวัดทั่วประเทศไทย[cite: 1] พร้อมระบบแนะนำการปฏิบัติตัวเพื่อรักษาสุขภาพ
                 </p>
+
+                <h4 style="color: var(--accent-blue); margin-bottom: 10px;">รายละเอียดและฟีเจอร์หลักของระบบ:</h4>
                 <ul class="project-features">
-                    <li>เชื่อมต่อข้อมูลภายนอกผ่าน RESTful API</li>
-                    <li>เปลี่ยนสีพื้นหลังและตัวเลขตามมาตรฐาน US AQI อัตโนมัติ</li>
-                    <li>อัปเดตข้อมูลอัตโนมัติทุกๆ 1 ชม. และรองรับ Pull-to-refresh</li>
-                    <li>ระบบ Login พร้อม Form Validation และซ่อนรหัสผ่าน</li>
+                    <li><strong>Real-time AQI & Weather Tracking:</strong> ตรวจสอบค่า AQI, ฝุ่น PM2.5, PM10 อุณหภูมิ ความชื้น และความเร็วลม ได้แบบเรียลไทม์ครอบคลุม 77 จังหวัด[cite: 1]</li>
+                    <li><strong>Dynamic UI Indicator:</strong> ตัวเลข AQI และสีของกรอบพื้นหลังจะเปลี่ยนสีให้อัตโนมัติตามระดับความรุนแรงของฝุ่น โดยอ้างอิงตามมาตรฐาน US AQI[cite: 1]</li>
+                    <li><strong>Smart Eco-Tips:</strong> ระบบคำแนะนำการปฏิบัติตัวเพื่อดูแลสุขภาพและลดการสร้างมลพิษ โดยข้อความจะปรับเปลี่ยนอัตโนมัติตามระดับค่า AQI ในขณะนั้น[cite: 1]</li>
+                    <li><strong>Auto Update & Pull-to-Refresh:</strong> มีระบบตั้งเวลาอัปเดตข้อมูลจาก API อัตโนมัติทุกๆ 1 ชั่วโมง และรองรับการดึงหน้าจอลงเพื่อรีเฟรชข้อมูลด้วยตัวเอง[cite: 1]</li>
+                    <li><strong>User Authentication & Security:</strong> มีระบบหน้า Login พร้อมการตรวจสอบความถูกต้องของข้อมูล (Form Validation) และรองรับการซ่อนรหัสผ่านเพื่อความปลอดภัย[cite: 1]</li>
                 </ul>
+
                 <div class="project-meta">
                     <div class="project-tags">
                         <span class="tag">Mobile Application</span>
                         <span class="tag">RESTful API</span>
                         <span class="tag">Dart / Flutter</span>
-                        <span class="tag">UX / UI</span>
+                        <span class="tag">UX / UI Design</span>
+                        <span class="tag">Form Validation</span>
                     </div>
                     <a href="https://github.com/Chit-Thanachit/Check-Air-Eco-Tips_Mini-Project-Mobile-Application" target="_blank" class="btn btn-outline">
-                        <i class="fa-brands fa-github"></i> ดูซอร์สโค้ดบน GitHub
+                        <i class="fa-brands fa-github"></i> ดูซอร์สโค้ดบน GitHub[cite: 1]
                     </a>
                 </div>
 
@@ -556,25 +562,37 @@
 
             <!-- Project 2: Lanna Golf Web App -->
             <div class="project-item">
-                <h3 class="project-title">โครงงาน การพัฒนาเว็บแอปพลิเคชันเพื่อจองคิวใช้บริการสนามกอล์ฟ (สนามกอล์ฟลานนา)</h3>
+                <h3 class="project-title">โครงงาน การพัฒนาเว็บแอปพลิเคชันเพื่อจองคิวใช้บริการสนามกอล์ฟ (กรณีศึกษา สนามกอล์ฟลานนา)</h3>
+                
                 <p class="project-desc">
-                    ระบบสารสนเทศจองคิวสนามกอล์ฟแบบ Responsive ตลอด 24 ชม. ตรวจสอบคิวว่างแบบเรียลไทม์ เลือกแคดดี้ ยืมอุปกรณ์ และระบบปฏิบัติการหลังบ้านสำหรับเจ้าหน้าที่และผู้ดูแลระบบ
+                    โครงการพัฒนาระบบสารสนเทศแบบออนไลน์ครบวงจรในรูปแบบเว็บแอปพลิเคชันที่มีการแสดงผลแบบ Responsive Design[cite: 1] รองรับการใช้งานทั้งบนคอมพิวเตอร์และสมาร์ทโฟนตลอด 24 ชั่วโมง[cite: 1] วัตถุประสงค์เพื่อแก้ไขปัญหาและข้อจำกัดของระบบงานเดิม ปรับปรุงกระบวนการทำงานให้เป็นอัตโนมัติ ลดภาระงานจดบันทึกด้วยกระดาษ และเพิ่มความยืดหยุ่นในการให้บริการ[cite: 1]
                 </p>
+
+                <h4 style="color: var(--accent-purple); margin-bottom: 10px;">ขอบเขตการทำงานของระบบ (System Scope):</h4>
                 <ul class="project-features">
-                    <li>คุมโครงสร้างตารางและ Transaction ป้องกันปัญหา Race Condition ในการจอง</li>
-                    <li>จัดการ API & State Management ด้วย StatefulWidget</li>
-                    <li>ระบบจำกัดสิทธิ์ผู้ใช้ตามบทบาท (6 บทบาท) เพื่อความปลอดภัย</li>
-                    <li>การจัดเก็บข้อมูล Scorecard เตรียมพร้อมสำหรับการวิเคราะห์ด้วยภาษา R</li>
+                    <li><strong>ระบบฝั่งผู้ใช้งาน (Client Side):</strong> ตรวจสอบสถานะคิวว่างแบบเรียลไทม์, จองวันและเวลาออกรอบ, เลือกแคดดี้, จองบริการเสริม (เช่น รถกอล์ฟ หรือการยืมอุปกรณ์) และระบบให้คะแนนรีวิวแคดดี้[cite: 1]</li>
+                    <li><strong>ระบบปฏิบัติการหลังบ้าน (Back-Office System):</strong> ระบบสำหรับแคดดี้ พนักงาน ผู้จัดการ และผู้ดูแลระบบ เพื่อใช้บริหารจัดการข้อมูล ตารางงาน คิวการทำงาน และข่าวสารประชาสัมพันธ์[cite: 1]</li>
                 </ul>
+
+                <h4 style="color: var(--accent-purple); margin-bottom: 10px;">เทคนิคเชิงเทคนิคและการพัฒนาระบบ (Technical Highlights):</h4>
+                <ul class="project-features">
+                    <li><strong>Database & Transaction Management:</strong> ออกแบบโครงสร้างตารางการจองและควบคุม Transaction อย่างกุม เพื่อป้องกันปัญหาคนแย่งจองคิวเวลาเดียวกัน (Race Condition) และป้องกันข้อมูลพังเวลาลบหรือแก้ไขประวัติการจอง[cite: 1]</li>
+                    <li><strong>API & State Management:</strong> พัฒนา API สำหรับเชื่อมต่อกับแอปพลิเคชันมือถือ และใช้โครงสร้างแบบ StatefulWidget ควบคุม State ของหน้าจอฟอร์มจองคิวที่มีหลายขั้นตอน ไม่ให้ข้อมูลสูญหายระหว่างการกรอก[cite: 1]</li>
+                    <li><strong>Role-Based Access Control (RBAC):</strong> ระบบจำกัดสิทธิ์การเข้าถึงและการจัดการข้อมูลของผู้ใช้งาน โดยแบ่งสิทธิ์ตามบทบาทอย่างชัดเจนถึง 6 บทบาท[cite: 1]</li>
+                    <li><strong>Data Processing for Analytics:</strong> มีระบบประมวลผลและจัดเก็บข้อมูลสถิติคะแนน Scorecard อย่างเป็นระเบียบ เพื่อเตรียมพร้อมสำหรับการนำไปวิเคราะห์ต่อยอด เช่น การใช้ภาษา R ทำโมเดล Classification จัดกลุ่มลูกค้าเพื่อทำโปรโมชัน[cite: 1]</li>
+                </ul>
+
                 <div class="project-meta">
                     <div class="project-tags">
                         <span class="tag">Web Application</span>
-                        <span class="tag">PHP / SQL</span>
-                        <span class="tag">Database Design</span>
+                        <span class="tag">Responsive Design</span>
+                        <span class="tag">Transaction Management</span>
+                        <span class="tag">State Management</span>
+                        <span class="tag">RBAC (6 Roles)</span>
                         <span class="tag">Data Analytics (R)</span>
                     </div>
                     <span class="btn btn-outline" style="opacity: 0.7; cursor: default;">
-                        <i class="fa-solid fa-hourglass-half"></i> อยู่ระหว่างการพัฒนา
+                        <i class="fa-solid fa-hourglass-half"></i> อยู่ระหว่างการพัฒนา[cite: 1]
                     </span>
                 </div>
 
